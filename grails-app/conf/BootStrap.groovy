@@ -32,6 +32,7 @@ import com.netflix.ice.basic.BasicReservationService
 import com.netflix.ice.basic.BasicLineItemProcessor
 import com.netflix.ice.processor.Ec2InstanceReservationPrice
 import com.netflix.ice.basic.BasicS3ApplicationGroupService
+import com.netflix.ice.basic.SampleMapDbResourceService
 import com.netflix.ice.basic.BasicManagers
 
 class BootStrap {
@@ -142,7 +143,7 @@ class BootStrap {
                         accountService,
                         new BasicProductService(),
                         new BasicReservationService(Ec2InstanceReservationPrice.ReservationPeriod.threeyear, Ec2InstanceReservationPrice.ReservationUtilization.HEAVY),
-                        null,
+                        new SampleMapDbResourceService(),
                         new BasicLineItemProcessor(),
                         null)
                 processorConfig.start(reservationCapacityPoller);
@@ -159,7 +160,7 @@ class BootStrap {
                         new BasicManagers(),
                         accountService,
                         new BasicProductService(),
-                        null,
+                        new SampleMapDbResourceService(),
                         new BasicS3ApplicationGroupService(),
                         null,
                         null)
